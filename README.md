@@ -1,4 +1,4 @@
-# log4j-shell-poc
+# All credits for https://github.com/kozmer/log4j-shell-poc log4j-shell-poc
 A Proof-Of-Concept for the recently found CVE-2021-44228 vulnerability. <br><br>
 Recently there was a new vulnerability in log4j, a java logging library that is very widely used in the likes of elasticsearch, minecraft and numerous others.
 
