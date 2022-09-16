@@ -4,11 +4,20 @@ pipeline {
         IMAGE_REPO_NAME="log4shellpub"
         IMAGE_TAG= "std1"
         REPOSITORY_URI = "public.ecr.aws/f9n2h3p5/log4shellpub"
-        
+        AWS_DEFAULT_REGION = "us-east-1"
     }
    
     stages {
-        
+    
+            stage('Logging into AWS ECR') {
+            steps {
+                script {
+                sh """aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${REPOSITORY_URI} """
+                }
+                 
+            }
+        } 
+    
     stage('Clone repository') { 
             steps { 
                 script{
