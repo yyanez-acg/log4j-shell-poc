@@ -15,7 +15,7 @@ pipeline {
         stage('Build') { 
             steps { 
                 script{
-                 app = docker.build("dvwaxpertsfix")
+                 app = docker.build("log4shell")
                 }
             }
         }
