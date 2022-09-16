@@ -4,7 +4,7 @@ pipeline {
         IMAGE_REPO_NAME="log4shellpub"
         IMAGE_TAG= "std1"
         REPOSITORY_URI = "public.ecr.aws/f9n2h3p5/log4shellpub"
-        AWS_DEFAULT_REGION = "us-east-2"
+        AWS_DEFAULT_REGION = "us-east-1"
     }
    
     stages {
@@ -44,5 +44,14 @@ pipeline {
          }
         }
       }
+      stage('Deploy'){
+            steps {
+                 sh 'sed -i "s/<TAG>/${BUILD_NUMBER}/" deployment.yml'
+                 sh 'kubectl apply -f deployment.yml'
+                 /*
+                 //If you are sure this deployment is already running and want to change the container image version, then you can use:
+                 sh 'kubectl set image deployments/dvwa 371571523880.dkr.ecr.us-east-2.amazonaws.com/dvwaxperts:${BUILD_NUMBER}'*/
+            }
+        } 
     }
 }
