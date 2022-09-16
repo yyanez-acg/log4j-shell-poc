@@ -33,7 +33,7 @@ pipeline {
      
         stage('Deploy'){
             steps {
-                 sh 'sed -i "s/<TAG>/${BUILD_NUMBER}/" deployment.yml'
+                 sh 'sed -i "s/<TAG>/st1${BUILD_NUMBER}/" deployment.yml'
                  sh 'kubectl apply -f deployment.yml'
                  /*
                  //If you are sure this deployment is already running and want to change the container image version, then you can use:
