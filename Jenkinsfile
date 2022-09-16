@@ -22,7 +22,8 @@ pipeline {
         stage('Push') {
             steps {
                 script{
-                        docker.withRegistry('https://371571523880.dkr.ecr.us-east-2.amazonaws.com/log4shell', 'ecr:us-east-2:aws-credentials') {
+                        //docker.withRegistry('https://371571523880.dkr.ecr.us-east-2.amazonaws.com/log4shell', 'ecr:us-east-2:aws-credentials') {
+                    docker.withRegistry('https://public.ecr.aws/f9n2h3p5/log4shellpub'){
                     app.push("${env.BUILD_NUMBER}")
                     app.push("latest")
                     }
