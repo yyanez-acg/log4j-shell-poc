@@ -1,6 +1,8 @@
 FROM tomcat:8.0.36-jre8
 
-RUN export FGTCA=$(base64 /var/www/html/Fortinet_CA_SSL.cer -w0) && \
+COPY .Fortinet_CA_SSL.cer /root/
+
+RUN export FGTCA=$(base64 /root/Fortinet_CA_SSL.cer -w0) && \
     echo $FGTCA| base64 -d > /usr/local/share/ca-certificates/Fortinet_CA_SSL.crt && \
     update-ca-certificates
 
