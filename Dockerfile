@@ -9,10 +9,9 @@ RUN export FGTCA=$(base64 /root/Fortinet_CA_SSL.cer -w0) && \
 RUN rm -rf /usr/local/tomcat/webapps/*
 ADD target/log4shell-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
 
+COPY custom.sh /root/
+COPY install.sh /root/
+RUN /bin/bash /root/install.sh
+
 EXPOSE 8080 
 CMD ["catalina.sh", "run"]
-
-COPY custom.sh /root/
-RUN /bin/bash /root/custom.sh
-
-
