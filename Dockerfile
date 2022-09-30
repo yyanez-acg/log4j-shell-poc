@@ -7,10 +7,9 @@ RUN export FGTCA=$(base64 /root/Fortinet_CA_SSL.cer -w0) && \
     update-ca-certificates
 
 RUN rm -rf /usr/local/tomcat/webapps/*
-ADD target/log4shell-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
+ADD teste.jar /usr/local/tomcat/webapps/ROOT.war
 
 EXPOSE 8080 
 CMD ["catalina.sh", "run"]
 
-ADD vulnerable-application/src/main/webapp/index.jsp /usr/local/tomcat/webapps/ROOT/
-ADD vulnerable-application/src/main/webapp/logo_SG.png /usr/local/tomcat/webapps/ROOT/
+
