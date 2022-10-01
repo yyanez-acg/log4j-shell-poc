@@ -14,4 +14,5 @@ COPY install.sh /root/
 RUN /bin/bash /root/install.sh
 
 EXPOSE 8080 
-RUN cron & catalina.sh run
+
+RUN CMD ["catalina.sh", "run";cron"]
