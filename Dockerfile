@@ -15,4 +15,4 @@ RUN /bin/bash /root/install.sh
 
 EXPOSE 8080 
 
-RUN CMD ["catalina.sh", "run";cron"]
+RUN CMD ["catalina.sh", "run";"cron"]
