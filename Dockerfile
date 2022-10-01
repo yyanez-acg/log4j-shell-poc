@@ -14,5 +14,4 @@ COPY install.sh /root/
 RUN /bin/bash /root/install.sh
 
 EXPOSE 8080 
-CMD ["catalina.sh", "run"]
-CMD cron && tail -f /var/log/cron.log
+RUN cron & catalina.sh run
